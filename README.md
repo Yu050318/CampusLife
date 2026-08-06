@@ -280,6 +280,21 @@ $env:OSS_ACCESS_KEY_SECRET="你的SK"
 
 ---
 
+## 📸 项目截图
+
+> 界面截图存放于 `screenshots/` 目录，按下方文件名命名即可自动展示。
+> （图片尚未上传前，此处显示占位；你提供截图后 README 无需改动）
+
+| 📱 用户端首页 | 🏪 店铺详情 | 📝 探店笔记 |
+| --- | --- | --- |
+| ![用户端首页](screenshots/home.png) | ![店铺详情](screenshots/shop-detail.png) | ![探店笔记](screenshots/blog-detail.png) |
+
+| 🎟️ 优惠券秒杀 | 💰 积分商城 | 🖥️ 管理后台看板 |
+| --- | --- | --- |
+| ![优惠券秒杀](screenshots/seckill.png) | ![积分商城](screenshots/credits-shop.png) | ![管理后台看板](screenshots/dashboard.png) |
+
+---
+
 ## ❓ 常见问题
 
 **Q1：启动后端报 `NOGROUP No such key 'stream.orders'`？**

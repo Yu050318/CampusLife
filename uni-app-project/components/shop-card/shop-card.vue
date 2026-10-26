@@ -119,7 +119,7 @@ export default {
 }
 
 .shop-score {
-	color: #ff6600;
+	color: #216b50;
 	font-weight: 600;
 	margin-right: 16rpx;
 }
@@ -142,7 +142,7 @@ export default {
 	position: absolute;
 	right: 20rpx;
 	bottom: 20rpx;
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	color: #fff;
 	font-size: 24rpx;
 	padding: 10rpx 28rpx;

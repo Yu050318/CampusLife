@@ -140,7 +140,7 @@ export default {
 }
 
 .voucher-card.seckill {
-	border-left: 6rpx solid #ff6600;
+	border-left: 6rpx solid #216b50;
 }
 
 .voucher-body {
@@ -161,7 +161,7 @@ export default {
 .price {
 	font-size: 48rpx;
 	font-weight: 700;
-	color: #ff6600;
+	color: #216b50;
 }
 
 .price .symbol {
@@ -203,7 +203,7 @@ export default {
 
 .stock {
 	font-size: 22rpx;
-	color: #ff6600;
+	color: #216b50;
 }
 
 .time {
@@ -230,7 +230,7 @@ export default {
 
 .buy-btn {
 	padding: 14rpx 40rpx;
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	color: #ffffff;
 	border-radius: 32rpx;
 	font-size: 26rpx;

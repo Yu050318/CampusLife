@@ -2,32 +2,28 @@
 	<view class="tb-wrap">
 		<view class="tb-bar">
 			<view class="tb-item" @click="goTab('/pages/home/home')">
-				<uni-icons type="home" size="24" :color="current === '/pages/home/home' ? '#ff6600' : '#999'" />
-				<text class="tb-text" :class="{ on: current === '/pages/home/home' }">首页</text>
+				<uni-icons type="home" size="24" :color="current === '/pages/home/home' ? '#216b50' : '#999'" />
+				<text class="tb-text" :class="{ on: current === '/pages/home/home' }">发现</text>
 			</view>
-			<view class="tb-item" @click="goTab('/pages/nearby/nearby')">
-				<uni-icons type="location" size="24" :color="current === '/pages/nearby/nearby' ? '#ff6600' : '#999'" />
-				<text class="tb-text" :class="{ on: current === '/pages/nearby/nearby' }">附近</text>
+			<view class="tb-item" @click="goNearby">
+				<uni-icons type="location" size="24" :color="nearbyActive ? '#216b50' : '#999'" />
+				<text class="tb-text" :class="{ on: nearbyActive }">周边</text>
 			</view>
 			<view class="tb-item tb-center" @click="goPublish">
 				<view class="tb-pub">
-					<image
-						src="https://my-project3.oss-cn-beijing.aliyuncs.com/fabu.png"
-						mode="aspectFit"
-						class="pub-img"
-					/>
+					<uni-icons type="plusempty" size="28" color="#fff" />
 				</view>
 				<text class="tb-text pub-label">发布</text>
 			</view>
 			<view class="tb-item" @click="goTab('/pages/messages/messages')">
 				<view class="message-icon-wrap">
-					<uni-icons type="chat" size="24" :color="current === '/pages/messages/messages' ? '#ff6600' : '#999'" />
+					<uni-icons type="chat" size="24" :color="current === '/pages/messages/messages' ? '#216b50' : '#999'" />
 					<view v-if="unreadCount > 0" class="notification-dot"></view>
 				</view>
 				<text class="tb-text" :class="{ on: current === '/pages/messages/messages' }">消息</text>
 			</view>
 			<view class="tb-item" @click="goTab('/pages/me/me')">
-				<uni-icons type="person" size="24" :color="current === '/pages/me/me' ? '#ff6600' : '#999'" />
+				<uni-icons type="person" size="24" :color="current === '/pages/me/me' ? '#216b50' : '#999'" />
 				<text class="tb-text" :class="{ on: current === '/pages/me/me' }">我的</text>
 			</view>
 		</view>
@@ -46,6 +42,9 @@ export default {
 	data() {
 		return { unreadCount: 0 }
 	},
+	computed: {
+		nearbyActive() { return ['/pages/nearby/nearby', '/pages/nearby-places/nearby-places'].includes(this.current) }
+	},
 	mounted() {
 		uni.$on('notificationReceived', this.refreshUnreadCount)
 		uni.$on('notificationChanged', this.refreshUnreadCount)
@@ -60,6 +59,16 @@ export default {
 		uni.$off('notificationChanged', this.refreshUnreadCount)
 	},
 	methods: {
+		goNearby() {
+			// #ifdef H5
+			if (this.current !== '/pages/nearby-places/nearby-places') {
+				uni.navigateTo({ url: '/pages/nearby-places/nearby-places' })
+			}
+			// #endif
+			// #ifndef H5
+			this.goTab('/pages/nearby/nearby')
+			// #endif
+		},
 		async refreshUnreadCount() {
 			if (!isLogin()) {
 				this.unreadCount = 0
@@ -131,7 +140,7 @@ export default {
 	font-weight: 500;
 }
 .tb-text.on {
-	color: #ff6600;
+	color: #216b50;
 	font-weight: 700;
 }
 .tb-center {
@@ -142,20 +151,16 @@ export default {
 	width: 88rpx;
 	height: 88rpx;
 	border-radius: 50%;
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 6rpx 20rpx rgba(255,102,0,0.35);
+	box-shadow: 0 6rpx 20rpx rgba(33,107,80,0.35);
 	margin-bottom: 6rpx;
-}
-.pub-img {
-	width: 44rpx;
-	height: 44rpx;
 }
 .pub-label {
 	font-size: 22rpx;
-	color: #ff6600;
+	color: #216b50;
 	margin-top: 0;
 	font-weight: 600;
 }

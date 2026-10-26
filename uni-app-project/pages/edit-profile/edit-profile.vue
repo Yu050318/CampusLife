@@ -210,6 +210,6 @@ export default {
 .value { flex: 1; font-size: 28rpx; color: #333333; text-align: right; margin-right: 8rpx; }
 .value.placeholder { color: #cccccc; }
 .btn-area { padding: 40rpx 24rpx; }
-.save-btn { width: 100%; height: 88rpx; line-height: 88rpx; text-align: center; background: linear-gradient(135deg, #ff6600, #ff8833); color: #ffffff; border-radius: 44rpx; font-size: 30rpx; border: none; }
+.save-btn { width: 100%; height: 88rpx; line-height: 88rpx; text-align: center; background: linear-gradient(135deg, #216b50, #398361); color: #ffffff; border-radius: 44rpx; font-size: 30rpx; border: none; }
 .save-btn::after { border: none; }
 </style>

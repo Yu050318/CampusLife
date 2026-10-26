@@ -18,6 +18,9 @@
 						<uni-icons type="clear" size="17" color="#bbb"></uni-icons>
 					</view>
 				</view>
+				<!-- #ifdef H5 -->
+				<navigator class="nearby-places-entry" url="/pages/nearby-places/nearby-places">查看真实<br />周边地点 ↗</navigator>
+				<!-- #endif -->
 			</view>
 		</view>
 
@@ -172,6 +175,9 @@ export default {
 </script>
 
 <style scoped>
+.nearby-places-entry { flex-shrink: 0; color: #216b50; font-size: 22rpx; line-height: 1.5; text-align: center; }
+.search-row { display: flex; align-items: center; gap: 18rpx; }
+.search-box { flex: 1; min-width: 0; }
 .container { background: #f5f5f5; min-height: 100vh; padding-bottom: calc(120rpx + env(safe-area-inset-bottom)); }
 .header-fixed { position: sticky; top: 0; z-index: 200; background: #fff; }
 .status-bar { height: var(--status-bar-height); }
@@ -185,7 +191,7 @@ export default {
 .filter-scroll { width: 100%; white-space: nowrap; }
 .filter-list { display: inline-flex; padding: 8rpx 20rpx 0; gap: 12rpx; }
 .filter-btn { display: inline-flex; align-items: center; gap: 10rpx; padding: 14rpx 28rpx; border-radius: 32rpx; background: #f5f5f5; font-size: 26rpx; color: #666; flex-shrink: 0; transition: all .2s; }
-.filter-btn.active { background: linear-gradient(135deg, #ff6600, #ff8833); color: #fff; font-weight: 600; box-shadow: 0 4rpx 12rpx rgba(255,102,0,.25); }
+.filter-btn.active { background: linear-gradient(135deg, #216b50, #398361); color: #fff; font-weight: 600; box-shadow: 0 4rpx 12rpx rgba(33,107,80,.25); }
 .filter-icon { width: 36rpx; height: 36rpx; }
 .shop-list { padding: 20rpx 20rpx 0; }
 .load-tip { display: flex; align-items: center; justify-content: center; padding: 30rpx; font-size: 24rpx; color: #999; gap: 12rpx; }

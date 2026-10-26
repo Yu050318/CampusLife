@@ -23,8 +23,8 @@
 		</view>
 		<view class="blog-footer">
 			<view class="action-item">
-				<uni-icons :type="blog.isLike ? 'heart-filled' : 'heart'" size="18" :color="blog.isLike ? '#ff6600' : '#999'" />
-				<text :style="{ color: blog.isLike ? '#ff6600' : '#999' }">{{ blog.liked || 0 }}</text>
+				<uni-icons :type="blog.isLike ? 'heart-filled' : 'heart'" size="18" :color="blog.isLike ? '#216b50' : '#999'" />
+				<text :style="{ color: blog.isLike ? '#216b50' : '#999' }">{{ blog.liked || 0 }}</text>
 			</view>
 			<view class="action-item">
 				<uni-icons type="chatbubble" size="18" color="#999" />

@@ -12,7 +12,7 @@
 
 		<view v-if="loaded" class="content safe-bottom">
 			<!-- 店铺图片 -->
-			<swiper v-if="images.length" class="image-swiper" indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#ff6600">
+			<swiper v-if="images.length" class="image-swiper" indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#216b50">
 				<swiper-item v-for="(img, idx) in images" :key="idx">
 					<image :src="img" mode="aspectFill" class="swiper-img" @click="previewImage(idx)" />
 				</swiper-item>
@@ -23,13 +23,13 @@
 				<view class="shop-title-row">
 					<text class="shop-name">{{ shop.name }}</text>
 					<view class="fav-button" :class="{ active: isFav }" @click.stop="doFavorite">
-						<uni-icons :type="isFav ? 'star-filled' : 'star'" size="18" :color="isFav ? '#ffffff' : '#ff6600'" />
+						<uni-icons :type="isFav ? 'star-filled' : 'star'" size="18" :color="isFav ? '#ffffff' : '#216b50'" />
 						<text>{{ isFav ? '已收藏' : '收藏店铺' }}</text>
 					</view>
 				</view>
 				<view class="rating-row">
 					<view class="stars">
-						<uni-icons v-for="i in 5" :key="i" type="star-filled" size="16" :color="i <= starCount ? '#ff6600' : '#e0e0e0'" />
+						<uni-icons v-for="i in 5" :key="i" type="star-filled" size="16" :color="i <= starCount ? '#216b50' : '#e0e0e0'" />
 					</view>
 					<text class="score-text">{{ formatScore(shop.score) }}分</text>
 					<text class="comments-text">{{ shop.comments || 0 }}篇笔记</text>
@@ -333,27 +333,27 @@ export default {
 	min-width: 168rpx;
 	height: 64rpx;
 	padding: 0 22rpx;
-	border: 2rpx solid #ff6600;
+	border: 2rpx solid #216b50;
 	border-radius: 32rpx;
 	background-color: #fff7f1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 8rpx;
-	box-shadow: 0 8rpx 20rpx rgba(255, 102, 0, 0.16);
+	box-shadow: 0 8rpx 20rpx rgba(33, 107, 80, 0.16);
 }
 
 .fav-button text {
 	font-size: 26rpx;
 	font-weight: 600;
-	color: #ff6600;
+	color: #216b50;
 	line-height: 1;
 }
 
 .fav-button.active {
-	background: linear-gradient(135deg, #ff6600, #ff8a32);
+	background: linear-gradient(135deg, #216b50, #ff8a32);
 	border-color: transparent;
-	box-shadow: 0 10rpx 24rpx rgba(255, 102, 0, 0.28);
+	box-shadow: 0 10rpx 24rpx rgba(33, 107, 80, 0.28);
 }
 
 .fav-button.active text {
@@ -374,7 +374,7 @@ export default {
 
 .score-text {
 	font-size: 28rpx;
-	color: #ff6600;
+	color: #216b50;
 	font-weight: 600;
 	margin-right: 16rpx;
 }
@@ -414,8 +414,8 @@ export default {
 .tag {
 	display: inline-block;
 	padding: 6rpx 20rpx;
-	background-color: #fff5ef;
-	color: #ff6600;
+	background-color: #edf5ef;
+	color: #216b50;
 	font-size: 22rpx;
 	border-radius: 8rpx;
 }
@@ -452,7 +452,7 @@ export default {
 }
 
 .voucher-item {
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	border-radius: 16rpx;
 	padding: 24rpx;
 	display: flex;
@@ -510,7 +510,7 @@ export default {
 	margin-top: 16rpx;
 	padding: 10rpx 24rpx;
 	background-color: rgba(255, 255, 255, 0.95);
-	color: #ff6600;
+	color: #216b50;
 	border-radius: 20rpx;
 	font-size: 24rpx;
 	font-weight: 600;
@@ -532,7 +532,7 @@ export default {
 	width: 100%;
 	height: 88rpx;
 	line-height: 88rpx;
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	color: #fff;
 	border-radius: 44rpx;
 	font-size: 32rpx;

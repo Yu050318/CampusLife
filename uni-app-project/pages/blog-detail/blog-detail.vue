@@ -29,8 +29,8 @@
 			<!-- 操作栏 -->
 			<view class="action-bar">
 				<view class="action-item" @click="doLike">
-					<uni-icons :type="blog.isLike ? 'heart-filled' : 'heart'" size="22" :color="blog.isLike ? '#ff6600' : '#666'" />
-					<text :style="{ color: blog.isLike ? '#ff6600' : '#666' }">{{ blog.liked || 0 }}</text>
+					<uni-icons :type="blog.isLike ? 'heart-filled' : 'heart'" size="22" :color="blog.isLike ? '#216b50' : '#666'" />
+					<text :style="{ color: blog.isLike ? '#216b50' : '#666' }">{{ blog.liked || 0 }}</text>
 				</view>
 				<view class="action-item" @click="doFavorite">
 					<uni-icons :type="isFav ? 'star-filled' : 'star'" size="22" :color="isFav ? '#ffaa00' : '#666'" />
@@ -43,7 +43,7 @@
 			</view>
 			<!-- 点赞用户 -->
 			<view v-if="likes.length" class="likes-section">
-				<view class="likes-header"><uni-icons type="heart-filled" size="16" color="#ff6600"></uni-icons><text class="likes-title">{{ likes.length }}人觉得很赞</text></view>
+				<view class="likes-header"><uni-icons type="heart-filled" size="16" color="#216b50"></uni-icons><text class="likes-title">{{ likes.length }}人觉得很赞</text></view>
 				<view class="likes-list"><view v-for="u in likes" :key="u.id" class="like-user" @click="goUser(u.id)"><user-avatar :src="u.icon" :size="64" /><text class="like-name">{{ u.nickName }}</text></view></view>
 			</view>
 
@@ -196,7 +196,7 @@ export default {
 .author-info { flex: 1; margin-left: 20rpx; display: flex; flex-direction: column; }
 .author-name { font-size: 28rpx; font-weight: 600; color: #333; }
 .pub-time { font-size: 22rpx; color: #999; margin-top: 4rpx; }
-.follow-btn { width: 120rpx; height: 56rpx; line-height: 56rpx; font-size: 24rpx; background: linear-gradient(135deg, #ff6600, #ff8833); color: #fff; border-radius: 28rpx; padding: 0; border: none; }
+.follow-btn { width: 120rpx; height: 56rpx; line-height: 56rpx; font-size: 24rpx; background: linear-gradient(135deg, #216b50, #398361); color: #fff; border-radius: 28rpx; padding: 0; border: none; }
 .follow-btn::after { border: none; }
 .follow-btn.followed { background: #f0f0f0; color: #999; }
 .blog-body { background: #fff; border-radius: 16rpx; padding: 24rpx; margin-bottom: 16rpx; }
@@ -226,7 +226,7 @@ export default {
 .comment-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; align-items: center; padding: 16rpx 20rpx calc(16rpx + env(safe-area-inset-bottom)); border-top: 1rpx solid #eee; z-index: 100; gap: 16rpx; }
 .comment-bar input { flex: 1; height: 72rpx; background: #f5f5f5; border-radius: 36rpx; padding: 0 28rpx; font-size: 26rpx; }
 .ph { color: #ccc; font-size: 26rpx; }
-.send-btn { width: 120rpx; height: 72rpx; line-height: 72rpx; background: linear-gradient(135deg, #ff6600, #ff8833); color: #fff; border-radius: 36rpx; font-size: 26rpx; padding: 0; border: none; }
+.send-btn { width: 120rpx; height: 72rpx; line-height: 72rpx; background: linear-gradient(135deg, #216b50, #398361); color: #fff; border-radius: 36rpx; font-size: 26rpx; padding: 0; border: none; }
 .send-btn::after { border: none; }
 .send-btn[disabled] { background: #f0f0f0; color: #ccc; }
 .safe-bottom { padding-bottom: calc(140rpx + env(safe-area-inset-bottom)); }

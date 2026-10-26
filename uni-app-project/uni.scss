@@ -1,11 +1,11 @@
 /**
- * 城市点评 App 主题样式变量
+ * 校邻 CampusLife 主题样式变量
  */
 
-/* 主色调 - 橙色系 */
-$app-primary: #ff6600;
-$app-primary-light: #ff8833;
-$app-primary-bg: #fff5ef;
+/* 主色调 - 校园绿 */
+$app-primary: #216b50;
+$app-primary-light: #398361;
+$app-primary-bg: #edf5ef;
 
 /* 文字颜色 */
 $text-primary: #333333;
@@ -14,7 +14,7 @@ $text-hint: #999999;
 $text-disabled: #cccccc;
 
 /* 背景颜色 */
-$bg-color: #f5f5f5;
+$bg-color: #f6f7f2;
 $bg-white: #ffffff;
 
 /* 卡片 */
@@ -26,7 +26,7 @@ $btn-radius: 40rpx;
 $btn-height: 80rpx;
 
 /* uni-app 原生变量覆盖 */
-$uni-color-primary: #ff6600;
+$uni-color-primary: #216b50;
 $uni-color-success: #4cd964;
 $uni-color-warning: #f0ad4e;
 $uni-color-error: #dd524d;
@@ -38,7 +38,7 @@ $uni-text-color-placeholder: #cccccc;
 $uni-text-color-disable: #cccccc;
 
 $uni-bg-color: #ffffff;
-$uni-bg-color-grey: #f5f5f5;
+$uni-bg-color-grey: #f6f7f2;
 $uni-bg-color-hover: #f0f0f0;
 $uni-bg-color-mask: rgba(0, 0, 0, 0.4);
 

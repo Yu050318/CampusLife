@@ -3,8 +3,8 @@
     <el-card class="login-card">
       <div class="login-brand">
         <el-icon class="brand-icon"><Shop /></el-icon>
-        <h2>城市点评管理后台</h2>
-        <p>Admin Management System</p>
+        <h2>校邻 · 管理后台</h2>
+        <p>CAMPUSLIFE / 校园生活运营</p><p class="project-note">个人学习项目，非华南农业大学官方平台</p>
       </div>
       <el-form :model="form" :rules="rules" ref="formRef">
         <el-form-item prop="username">
@@ -59,16 +59,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1f2937 0%, #374151 60%, #409eff 140%);
+  background: radial-gradient(ellipse at top left, #dce8d5 0%, #edf3e8 45%, #f6f7f2 100%);
 }
 .login-card {
-  width: 400px;
+  width: min(400px, calc(100vw - 40px));
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 40px rgba(24, 62, 48, 0.10);
   border: none;
 }
 .login-brand { text-align: center; margin-bottom: 28px; }
-.login-brand .brand-icon { font-size: 40px; color: #409eff; }
+.login-brand .brand-icon { font-size: 40px; color: #216b50; }
 .login-brand h2 { margin: 10px 0 4px; font-size: 20px; color: #1f2d3d; }
 .login-brand p { margin: 0; font-size: 12px; color: #a0a4ac; letter-spacing: 1px; }
+.login-brand .project-note { margin-top: 16px; font-size: 11px; letter-spacing: 0; line-height: 1.7; }
 </style>

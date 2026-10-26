@@ -125,10 +125,10 @@ export default {
 .stat-num { font-size: 32rpx; font-weight: 700; color: #333; }
 .stat-label { font-size: 24rpx; color: #999; margin-top: 4rpx; }
 .profile-actions { display: flex; gap: 20rpx; margin-top: 24rpx; }
-.profile-follow { width: 180rpx; height: 64rpx; line-height: 64rpx; background: linear-gradient(135deg, #ff6600, #ff8833); color: #fff; border-radius: 32rpx; font-size: 26rpx; padding: 0; border: none; }
+.profile-follow { width: 180rpx; height: 64rpx; line-height: 64rpx; background: linear-gradient(135deg, #216b50, #398361); color: #fff; border-radius: 32rpx; font-size: 26rpx; padding: 0; border: none; }
 .profile-follow::after { border: none; }
 .profile-follow.followed { background: #f0f0f0; color: #999; }
-.profile-common { width: 180rpx; height: 64rpx; line-height: 64rpx; background: #fff; color: #ff6600; border: 2rpx solid #ff6600; border-radius: 32rpx; font-size: 26rpx; padding: 0; }
+.profile-common { width: 180rpx; height: 64rpx; line-height: 64rpx; background: #fff; color: #216b50; border: 2rpx solid #216b50; border-radius: 32rpx; font-size: 26rpx; padding: 0; }
 .profile-common::after { border: none; }
 .detail-card { background: #fff; margin: 20rpx; border-radius: 16rpx; padding: 24rpx; }
 .detail-row { display: flex; align-items: center; gap: 10rpx; font-size: 26rpx; color: #666; padding: 12rpx 0; }
@@ -151,7 +151,7 @@ export default {
 	flex: 1;
 	padding: 8rpx 0;
 }
-.pc-num { font-size: 30rpx; font-weight: 700; color: #ff6600; }
+.pc-num { font-size: 30rpx; font-weight: 700; color: #216b50; }
 .pc-label { font-size: 22rpx; color: #999; margin-top: 4rpx; }
 .pc-divider { width: 2rpx; height: 32rpx; background: #eee; }
 

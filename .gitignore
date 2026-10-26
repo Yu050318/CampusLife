@@ -18,7 +18,7 @@ src/main/resources/application.yaml
 # 本地环境变量 / 配置文件
 *.local
 *.local.*
-.env
+.env.local
 .env.*
 !.env.example
 
@@ -45,3 +45,18 @@ Thumbs.db
 .settings
 .springBeans
 .sts4-cache
+
+# 本地联调与自动化产物
+.playwright-cli/
+output/
+docs/nearby-iphone-test.md
+docs/nearby-places-verification.md
+docs/nearby-phone-firewall.ps1
+docs/CampusLife_Codex_Development_Plan.md
+uni-app-project/tests/nearby-coordinate-live.js
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx

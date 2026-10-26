@@ -25,13 +25,13 @@
 	/* 全局公共样式 */
 	page {
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-		background-color: #f5f5f5;
+		background-color: #f6f7f2;
 		color: #333333;
 	}
 
 	.container {
 		min-height: 100vh;
-		background-color: #f5f5f5;
+		background-color: #f6f7f2;
 	}
 
 	/* 安全区域适配 */
@@ -50,7 +50,7 @@
 
 	/* 按钮 */
 	.btn-primary {
-		background: linear-gradient(135deg, #ff6600, #ff8833);
+		background: linear-gradient(135deg, #216b50, #398361);
 		color: #ffffff;
 		border-radius: 40rpx;
 		height: 80rpx;
@@ -66,8 +66,8 @@
 
 	.btn-plain {
 		background-color: #ffffff;
-		color: #ff6600;
-		border: 2rpx solid #ff6600;
+		color: #216b50;
+		border: 2rpx solid #216b50;
 		border-radius: 40rpx;
 		height: 64rpx;
 		line-height: 64rpx;
@@ -97,8 +97,8 @@
 	.tag {
 		display: inline-block;
 		padding: 4rpx 16rpx;
-		background-color: #fff5ef;
-		color: #ff6600;
+		background-color: #edf5ef;
+		color: #216b50;
 		font-size: 22rpx;
 		border-radius: 8rpx;
 		margin-right: 12rpx;
@@ -106,7 +106,7 @@
 
 	/* 评分 */
 	.score {
-		color: #ff6600;
+		color: #216b50;
 		font-weight: 600;
 	}
 

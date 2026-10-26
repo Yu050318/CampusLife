@@ -1,322 +1,228 @@
 <div align="center">
 
-# 🏙️ 城市点评系统 · City Review
+# 校邻 CampusLife
 
-> 一个基于 **Spring Boot 3 + Redis + uni-app** 的本地生活探店点评平台，
-> 覆盖用户端小程序/H5、管理后台与后端服务三端完整闭环。
+**面向校园的生活分享与周边发现平台**
 
-![Java](https://img.shields.io/badge/Java-17-orange?logo=java&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.16-green?logo=spring&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-%E2%89%A55.0-red?logo=redis&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql&logoColor=white)
-![Vue](https://img.shields.io/badge/Vue-3.5-brightgreen?logo=vuedotjs&logoColor=white)
-![uni-app](https://img.shields.io/badge/uni--app-Vue3-ff6a00)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+Spring Boot + Redis + Vue 3 / uni-app，覆盖真实周边地点、站内店铺、探店笔记、社交消息、优惠券和运营管理。
+
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.16-6DB33F)
+![Redis](https://img.shields.io/badge/Redis-Lua%20%7C%20GEO%20%7C%20Stream-DC382D)
+![Vue](https://img.shields.io/badge/Vue-3-42b883)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+[快速开始](#快速开始) · [技术亮点](#技术亮点) · [周边模块说明](docs/nearby-places.md) · [简历项目描述](docs/resume-project.md)
 
 </div>
 
----
+## 项目介绍
 
-## 📖 项目简介
+CampusLife 将校园内容社区与本地生活场景结合：用户可以查找真实周边商家、浏览店铺和优惠券、发布关联店铺的笔记、参与评论与关注互动；运营人员通过独立管理后台维护用户、商户、内容和营销数据。
 
-**城市点评系统** 是一个仿大众点评/小红书风格的本地生活探店平台。用户可以浏览城市商户、发布探店笔记、点赞评论、关注好友、查看附近好店；平台内置 **优惠券秒杀、积分商城、勋章成长体系** 等营销玩法，并配套完整的 **Web 管理后台**，支持数据看板、内容审核与订单管理。
+项目采用前后端分离架构，由 **Spring Boot 后端、uni-app 用户端和 Vue 管理后台**组成。H5 默认进入高德真实地点发现页，同时保留站内店铺的独立业务链路。
 
-项目采用 **前后端分离** 架构：
+## 核心功能
 
-| 端 | 技术 | 说明 |
-| --- | --- | --- |
-| 📱 用户端 | uni-app (Vue 3) | 一套代码多端发布：微信小程序 / H5 / Android / iOS，推荐 HBuilderX 运行 |
-| 🖥️ 管理后台 | Vue 3 + Vite + Element Plus | 数据可视化（ECharts）与运营管理 |
-| ⚙️ 后端服务 | Spring Boot 3.5 + MyBatis-Plus | 单体应用，唯一外部依赖组件为 **Redis**（含 Redis Stream 消息队列） |
-
----
-
-## ✨ 功能特性
-
-### 👤 用户端（uni-app）
-
-- **账号体系**：短信验证码 / 密码登录、注册、JWT 鉴权、Token 黑名单登出
-- **商户浏览**：店铺分类、店铺详情（Redis 缓存）、搜索（热门搜索 + 个人搜索历史）
-- **附近好店**：基于 Redis GEO 的周边商户距离查询
-- **探店笔记**：发布/浏览笔记、点赞（Redis Set 去重 + ZSet 点赞排行 Top5）、评论与二级回复
-- **社交关系**：关注/取关、共同关注、关注 Feed 流（ZSet 推模式 + 滚动分页）、粉丝统计
-- **消息通知**：WebSocket 实时推送（点赞、评论、关注、系统通知）
-- **营销玩法**：
-  - 🎟️ **优惠券秒杀**：Redis Lua 原子扣库存 + Redis Stream 异步下单 + Redisson 分布式锁防超卖/一人一单
-  - 💰 **积分商城**：签到、发文/获赞/登录/关注得积分，积分兑换优惠券
-  - 🏅 **勋章体系**：按发文数、获赞数、粉丝数、签到天数、积分自动解锁勋章
-- **订单与支付**：订单状态机（待支付/已支付/已取消/已核销/已退款）、支付宝下单（预留）
-
-### 🛠️ 管理后台（Vue3 + Element Plus）
-
-- 📊 **数据看板**：用户/商户/订单/内容多维统计（ECharts 趋势图）
-- 👥 **用户管理**：用户列表、封禁/删除
-- 🏪 **商户管理**：商户与分类的增删改查
-- 📝 **内容管理**：点评笔记与评论的审核、置顶、隐藏、删除
-- 🎫 **营销管理**：优惠券与秒杀场次配置、订单查询
-
-### ⚙️ 后端技术亮点
-
-| 场景 | 方案 |
+| 模块 | 功能 |
 | --- | --- |
-| 缓存 | Redis 缓存商铺详情，`CacheClient` 封装穿透/击穿/雪崩防护（空值缓存 + 逻辑过期 + 互斥锁） |
-| 分布式 ID | 基于 Redis 的全局唯一 ID 生成器（时间戳 31 位 + 序列号 32 位，日 42 亿级） |
-| 秒杀 | Lua 脚本原子校验库存与一人一单 → Redis Stream 异步建单 → Redisson 锁兜底 |
-| Feed 流 | 关注推送模式：发文即写入粉丝 ZSet，滚动分页避免深翻页 |
-| 鉴权 | 三层拦截器：JWT 认证 → 登录校验 → 管理员权限，`UserHolder` ThreadLocal 传递用户 |
-| 文件存储 | 阿里云 OSS（配置可替换，密钥不入库） |
-| 实时通信 | Spring WebSocket + JWT 握手拦截器，离线消息落库补推 |
+| 真实周边地点 | 浏览器定位、地图选区、分类/半径/关键词筛选、商家图片与评分、距离展示、分页、地图列表联动、地址复制 |
+| 站内店铺 | 分类和搜索、Redis GEO 附近查询、店铺详情、关联笔记与优惠券 |
+| 内容社区 | 图文笔记、店铺关联、评分、点赞、收藏、评论与回复 |
+| 关注与消息 | 关注关系、共同关注、滚动 Feed、WebSocket 消息通知、未读状态 |
+| 营销与成长 | 优惠券、秒杀、订单流转、积分签到与兑换、勋章体系 |
+| 运营后台 | 数据看板、用户与商户管理、笔记和评论管理、优惠券及订单管理 |
 
----
+## 技术亮点
 
-## 🧱 技术栈
+### 1. 真实周边发现与数据边界
 
-| 分类 | 技术 | 版本 |
-| --- | --- | --- |
-| 语言 | Java | 17 |
-| 后端框架 | Spring Boot | 3.5.16 |
-| ORM | MyBatis-Plus (+JSqlParser) | 3.5.17 |
-| 缓存/消息 | Redis（Lettuce + Redisson） | ≥ 5.0 |
-| 鉴权 | JJWT | 0.13.0 |
-| 工具库 | Hutool | 5.8.47 |
-| 对象存储 | 阿里云 OSS SDK | 3.18.5 |
-| 支付 | 支付宝 SDK（预留） | 4.40.909.ALL |
-| 用户端 | uni-app (Vue 3) | — |
-| 管理后台 | Vue 3 + Vite + Element Plus + ECharts + Pinia | 4.x / 2.3.12 / 5.4.3 |
+- 使用 Spring `RestClient` 封装高德 v5 周边搜索，复用项目 `Result` 返回协议与前端请求工具。
+- 一次查询通过 `show_fields=business,photos` 获取商业评分与图片，避免为列表逐条调用详情接口。
+- 将高德 POI 与内部 `Shop` 分开建模，保留内部店铺 ID 在笔记、优惠券和详情中的业务关联。
+- 通过独立页面、地图组件、地点卡片与查询适配层接入现有项目，复用原有导航和视觉体系。
 
----
+### 2. 明确的定位与查询状态管理
 
-## 🏗️ 系统架构
+- 定位采用 **浏览器原生 WGS84 → 高德官方转换 → GCJ-02 地图及查询中心**的单一链路。
+- 蓝点和商家标记采用独立样式与层级，卡片、地图标记及选中状态同步更新。
+- 使用查询快照与递增版本号处理请求竞态，过滤迟到响应；刷新失败保留已有结果，分页失败重试原页。
+- 按 POI ID 去重、成功后推进页码，地图拖动由用户确认后查询；定位回调在离页或手动选区后失效。
+
+### 3. 第三方接口治理
+
+- 经纬度、分类、半径、关键词及页码在后端校验，统一清洗坐标、距离、评分和图片字段。
+- Redis Lua 原子计数与过期实现 IP 限流，默认 **30 次 / 60 秒**，支持配置阈值与可信代理。
+- 上游连接/读取超时分别为 **2 秒 / 5 秒**；前端独立适配层设置 **10 秒**等待上限。
+- Web 服务 Key 保留在后端，JS 安全密钥由固定路径代理注入，提供环境模板和 Nginx 配置示例。
+
+### 4. Redis 在业务场景中的应用
+
+| 场景 | 实现 |
+| --- | --- |
+| 店铺缓存 | 店铺详情采用空值缓存防穿透；`CacheClient` 另封装互斥重建和逻辑过期策略 |
+| 地理查询 | Redis GEO 支持站内附近店铺检索 |
+| 优惠券秒杀 | Lua 原子校验库存和重复下单，结合 Redis Stream 消费、Redisson 锁与数据库订单处理 |
+| 社交互动 | Set 管理点赞关系，ZSet 支持点赞排序与关注 Feed 滚动分页 |
+| 登录状态 | JWT 鉴权、Redis Token 黑名单与 ThreadLocal 用户上下文 |
+| 实时通知 | Spring WebSocket 推送与数据库通知记录、未读状态管理 |
+
+## 系统架构
 
 ```mermaid
-flowchart TB
-    subgraph Client["客户端"]
-        U[📱 uni-app 用户端<br/>小程序 / H5 / App]
-        A[🖥️ Vue3 管理后台]
-    end
-
-    subgraph Backend["Spring Boot 单体后端 (8081)"]
-        C[Controller 层<br/>user / shop / blog / social / credits / trade / admin]
-        S[Service 层<br/>业务逻辑 + 事务]
-        M[Mapper 层<br/>MyBatis-Plus]
-        WS[WebSocket<br/>消息实时推送]
-        IC[JWT 拦截器 × 3<br/>认证/登录/权限]
-    end
-
-    subgraph Data["数据层"]
-        DB[(MySQL 8.0<br/>city-reviews · 18 张表)]
-        RD[(Redis ≥ 5.0<br/>缓存 / GEO / Stream / Lua)]
-        OSS[☁️ 阿里云 OSS<br/>图片存储]
-        PAY[💰 支付宝<br/>支付（预留）]
-    end
-
-    U --> Backend
-    A --> Backend
-    C --> S --> M --> DB
-    S --> RD
-    WS --> U
-    S --> OSS
-    S --> PAY
+flowchart LR
+    H[uni-app / Vue 3 用户端] --> API[Spring Boot REST API]
+    A[Vue 3 运营后台] --> API
+    API --> AUTH[JWT / 登录 / 管理员拦截器]
+    AUTH --> S[店铺 / 内容 / 社交 / 营销服务]
+    S --> DB[(MySQL)]
+    S --> R[(Redis: Cache / GEO / Lua / Stream)]
+    S --> OSS[阿里云 OSS]
+    API --> N[NearbyController / AmapNearbyService]
+    N --> R
+    N --> AMAP[高德 POI v5]
+    H --> MAP[高德 JS API 地图与坐标转换]
+    S --> WS[WebSocket 通知]
+    WS --> H
 ```
 
----
+## 技术栈
 
-## 📁 目录结构
+| 层次 | 技术 |
+| --- | --- |
+| 后端 | Java 17、Spring Boot 3.5.16、MyBatis-Plus 3.5.17、JJWT |
+| 数据与缓存 | MySQL 8、Redis、Lettuce、Redisson |
+| 用户端 | Vue 3、uni-app、Vite、Sass |
+| 管理端 | Vue 3、Vue Router、Pinia、Element Plus、ECharts |
+| 外部能力 | 高德 JS API 2.0 / Web 服务 v5、阿里云 OSS |
+| 验证 | JUnit 5、MockMvc、MockRestServiceServer、Node Test Runner、Playwright |
 
+## 代码导览
+
+```text
+CampusLife/
+├── src/main/java/com/cn/
+│   ├── controller/        # 账号、店铺、内容、社交、营销及管理接口
+│   ├── service/           # 业务逻辑与事务
+│   ├── nearby/            # 高德查询封装、参数校验、限流与响应模型
+│   ├── mapper/            # MyBatis-Plus 数据访问
+│   ├── utils/             # 缓存、鉴权、ID 生成等公共能力
+│   └── ws/                # WebSocket 通知
+├── src/main/resources/    # 配置示例、Lua 脚本、Mapper XML
+├── src/test/java/         # 后端测试
+├── uni-app-project/
+│   ├── pages/             # 用户页面及独立真实地点页
+│   ├── components/        # 地图、地点卡片和原业务组件
+│   ├── api/               # 请求适配层
+│   └── tests/             # 查询状态、坐标与浏览器验证
+├── admin-panel/           # 运营管理后台
+├── sql/                   # 数据库初始化脚本
+├── screenshots/           # 项目界面
+└── docs/                  # 模块说明、部署代理及简历材料
 ```
-City-Review-Project
-├── src/                          # 🐳 后端（Spring Boot 单体）
-│   ├── main/java/com/cn/
-│   │   ├── controller/           #   REST 接口（user/shop/content/social/credits/trade/admin）
-│   │   ├── service/              #   业务层接口与实现
-│   │   ├── mapper/               #   MyBatis-Plus Mapper
-│   │   ├── entity/               #   实体类（与 18 张表对应）
-│   │   ├── dto/                  #   数据传输对象（Result/LoginFormDTO 等）
-│   │   ├── config/               #   配置类（Redis/OSS/WebSocket/拦截器/跨域）
-│   │   ├── utils/                #   工具（JWT/密码/ID 生成器/缓存客户端/拦截器）
-│   │   └── ws/                   #   WebSocket 处理器与握手拦截器
-│   └── main/resources/
-│       ├── application-example.yaml  # 📋 配置模板（真实配置不入库）
-│       ├── seckill.lua               #   秒杀 Lua 脚本（原子扣库存）
-│       └── mapper/                   #   XML 映射
-├── uni-app-project/              # 📱 用户端（uni-app，Vue 3）
-│   └── pages/                    #   首页/登录/店铺详情/笔记详情/发布/秒杀/积分商城/勋章墙…
-├── admin-panel/                  # 🖥️ 管理后台（Vue 3 + Element Plus）
-│   └── src/views/                #   看板/用户/商户/点评/评论/优惠券/订单
-├── sql/
-│   └── city-reviews.sql          # 🗄️ 数据库初始化脚本（建库建表 + 示例数据）
-├── pom.xml                       # Maven 构建配置
-└── README.md
-```
 
----
+关键实现：[高德服务](src/main/java/com/cn/nearby/AmapNearbyService.java) · [IP 限流](src/main/java/com/cn/nearby/NearbyRateLimiter.java) · [查询状态](uni-app-project/utils/nearby-state.js) · [定位封装](uni-app-project/utils/nearby-location.js) · [地图组件](uni-app-project/components/nearby-map/nearby-map.vue)
 
-## 🚀 快速开始
+## 快速开始
 
-### 0️⃣ 环境要求
+### 环境
 
-| 依赖 | 版本 | 说明 |
-| --- | --- | --- |
-| JDK | 17+ | 后端运行 |
-| Maven | 3.6+ | 后端构建 |
-| MySQL | 8.0 | 数据库 |
-| Redis | **≥ 5.0** | 缓存 / GEO / Stream |
-| Node.js | 16+ | 管理后台 |
-| HBuilderX | 最新版 | 用户端（推荐） |
+JDK 17+、Maven、MySQL 8、Redis 5+、Node.js 20+。用户端也可使用 HBuilderX 打开运行。
 
-### 1️⃣ 初始化数据库
+### 1. 数据与后端
+
+导入初始化数据，并首次创建订单消费者组：
 
 ```bash
-# 在 MySQL 中创建数据库并导入脚本（脚本内含建库语句与示例数据）
 mysql -uroot -p < sql/city-reviews.sql
+redis-cli XGROUP CREATE stream.orders g1 '$' MKSTREAM
 ```
 
-### 2️⃣ 启动 Redis（必须 ≥ 5.0）
+在项目根目录的 PowerShell 中准备配置：
 
-```bash
-redis-server
+```powershell
+if (!(Test-Path src/main/resources/application.yaml)) {
+    Copy-Item src/main/resources/application-example.yaml src/main/resources/application.yaml
+}
+if (!(Test-Path .env.local)) { Copy-Item .env.example .env.local }
+if (!(Test-Path uni-app-project/.env.local)) {
+    Copy-Item uni-app-project/.env.example uni-app-project/.env.local
+}
 ```
 
-> ⚠️ **重要：启动后端前，必须先创建 Redis Stream 消费者组**，否则启动报错：
->
-> ```bash
-> redis-cli
-> > XGROUP CREATE stream.orders g1 $ MKSTREAM
-> ```
+填写数据库、Redis、JWT、OSS 等项目配置，以及高德 Web 服务 Key、JS API Key 和 JS 安全密钥。根目录环境文件通过以下命令加载到后端进程：
 
-### 3️⃣ 配置并启动后端
-
-```bash
-# ① 复制配置模板并填入你自己的数据库/OSS 等配置
-cd src/main/resources
-copy application-example.yaml application.yaml   # Windows
-# cp application-example.yaml application.yaml   # Linux/macOS
-
-# ② 启动
+```powershell
+Get-Content .env.local | ForEach-Object {
+    if ($_ -match '^\s*(AMAP_WEB_KEY|NEARBY_RATE_LIMIT|NEARBY_TRUSTED_PROXIES)=(.*)$') {
+        [Environment]::SetEnvironmentVariable($Matches[1], $Matches[2].Trim(), 'Process')
+    }
+}
 mvn spring-boot:run
 ```
 
-后端默认运行于 `http://localhost:8081`。
+后端默认端口为 `8081`。完整字段与地图安全代理配置见 [周边模块运行说明](docs/nearby-places.md)。
 
-### 4️⃣ 启动用户端（uni-app）
+### 2. 用户端 H5
 
-用 **HBuilderX** 打开 `uni-app-project` 目录，选择运行到 **浏览器 / 微信开发者工具 / 真机** 即可。
+```bash
+cd uni-app-project
+npm ci
+npm run dev:h5
+```
 
-> 用户端接口地址在 `uni-app-project/utils/constants.js` 中配置（默认 `http://localhost:8081`）。
+访问 `http://127.0.0.1:5173/`。首页“周边好店”及底部“周边”打开真实地点页，顶部“站内店铺”切回内部商户。站内业务接口地址由 `utils/constants.js` 配置；新增地点查询通过同源 `/api` 代理访问后端。
 
-### 5️⃣ 启动管理后台
+### 3. 管理后台
 
 ```bash
 cd admin-panel
-npm install
-npm run dev
+npm ci
+npm run dev -- --port 5174
 ```
 
-浏览器访问 `http://localhost:5173`，默认管理员账号：
+访问 `http://localhost:5174/`。
 
-| 账号 | 密码 |
-| --- | --- |
-| `admin` | `admin123` |
+### 4. HTTPS 部署
 
----
+H5 页面与新增 API 使用同源 HTTPS，地图 SDK 安全代理在服务端注入密钥。参考 [Nginx 配置模板](docs/nearby-nginx.conf.template)，合入站点配置后执行 `nginx -t` 验证。
 
-## 🔐 配置说明
+真实 `.env.local`、后端运行配置、证书及测试产物保留在本地；仓库提供可填写的配置示例。
 
-真实的 `application.yaml`（含数据库密码、JWT 密钥、阿里云 OSS AccessKey）**已被 `.gitignore` 排除，不会提交到仓库**。仓库仅提供脱敏模板 `application-example.yaml`：
+## 测试与构建
 
-```yaml
-spring:
-  datasource:
-    password: ${DB_PASSWORD}              # 数据库密码
-jwt:
-  secret: ${JWT_SECRET:your-jwt-secret}   # JWT 签名密钥
-aliyun:
-  oss:
-    access-key-id: ${OSS_ACCESS_KEY_ID}   # 阿里云 AccessKey ID
-    access-key-secret: ${OSS_ACCESS_KEY_SECRET}
+新增周边模块提供 **8 项后端测试、11 项前端状态与定位测试**，覆盖参数和响应清洗、上游异常、限流、请求竞态、分页去重以及原生坐标转换。
+
+```powershell
+# 根目录：后端测试
+mvn "-Dtest=com.cn.nearby.NearbyTest" test
+
+# 用户端目录：状态与定位测试
+cd uni-app-project
+node --test tests/nearby-state.test.mjs tests/nearby-location.test.mjs
+
+# H5 构建
+$env:UNI_INPUT_DIR = (Get-Location).Path
+node node_modules/@dcloudio/vite-plugin-uni/bin/uni.js build -p h5
 ```
 
-**推荐做法**：使用环境变量注入密钥，避免任何敏感信息进入代码库：
+另提供独立 Redis 集成测试与 Playwright 交互脚本，运行方式见 [模块说明](docs/nearby-places.md)。
 
-```bash
-# Windows PowerShell
-$env:DB_PASSWORD="你的数据库密码"
-$env:JWT_SECRET="至少32位随机字符串"
-$env:OSS_ACCESS_KEY_ID="你的AK"
-$env:OSS_ACCESS_KEY_SECRET="你的SK"
-```
+## 界面展示
 
-> 不配置 OSS 不影响项目启动，仅图片上传功能不可用。
-
----
-
-## 🗄️ 数据库设计（18 张表）
-
-| 模块 | 表 |
-| --- | --- |
-| 账号体系 | `tb_user`、`tb_user_info`、`tb_admin` |
-| 商户 | `tb_shop`、`tb_shop_type` |
-| 内容 | `tb_blog`、`tb_blog_comments`、`tb_rating` |
-| 社交 | `tb_follow`、`tb_favorite`、`tb_notification` |
-| 营销 | `tb_voucher`、`tb_seckill_voucher`、`tb_voucher_order` |
-| 积分 | `tb_credits_log`、`tb_credits_exchange`、`tb_badge`、`tb_user_badge` |
-
----
-
-## 📡 接口概览
-
-| 前缀 | 模块 | 说明 |
+| 店铺浏览 | 内容社区 | 个人中心 |
 | --- | --- | --- |
-| `/user` | 用户 | 验证码 / 登录 / 注册 / 资料 / 头像上传 |
-| `/shop`、`/shop-type` | 商户 | 详情（缓存）/ 分类 / 附近 GEO |
-| `/blog`、`/blog-comments` | 内容 | 笔记 CRUD / 点赞 / 评论 / 关注 Feed |
-| `/search` | 搜索 | 笔记搜索 / 热词 / 历史 |
-| `/follow`、`/favorite` | 社交 | 关注 / 收藏 |
-| `/notification` | 消息 | 通知列表 / WebSocket |
-| `/voucher`、`/voucher-order` | 营销 | 优惠券 / 秒杀下单 / 订单状态机 |
-| `/credits` | 积分 | 签到 / 明细 / 兑换 / 勋章 |
-| `/upload` | 文件 | 图片上传（OSS） |
-| `/admin/**` | 管理端 | 登录 / 数据看板 / 各模块管理 |
+| ![店铺浏览](screenshots/店铺首页.png) | ![内容社区](screenshots/笔记首页.png) | ![个人中心](screenshots/我的页面.png) |
 
----
-
-## 📸 项目截图
-
-> 界面截图存放于 `screenshots/` 目录
-
-| 📱 店铺首页 | 📝 笔记首页 | 👤 我的页面 |
-| --- | --- | --- |
-| ![店铺首页](screenshots/店铺首页.png) | ![笔记首页](screenshots/笔记首页.png) | ![我的页面](screenshots/我的页面.png) |
-
-| 💰 积分商城 | 🖥️ 管理后台看板 |
+| 积分商城 | 管理看板 |
 | --- | --- |
-| ![积分商城](screenshots/积分商城.png) | ![管理后台看板](screenshots/管理面板.png) |
+| ![积分商城](screenshots/积分商城.png) | ![管理看板](screenshots/管理面板.png) |
 
----
+## 项目展示与简历
 
-## ❓ 常见问题
+[简历项目描述与面试讲解提纲](docs/resume-project.md)提供项目概述、技术职责、源码入口和两分钟演示顺序，可结合目标岗位选取内容。
 
-**Q1：启动后端报 `NOGROUP No such key 'stream.orders'`？**
-请先执行 `XGROUP CREATE stream.orders g1 $ MKSTREAM` 创建消费者组，详见上文第 2 步。
+## License
 
-**Q2：Redis 版本要求？**
-必须 **≥ 5.0**（使用了 Redis Stream 与 GEO 特性）。
-
-**Q3：不配置阿里云 OSS 能启动吗？**
-能。仅图片上传功能不可用，其余功能不受影响。
-
-**Q4：SQL 脚本里中文注释乱码？**
-Navicat 导出编码所致，仅注释乱码，数据与表结构不受影响。
-
-**Q5：管理后台登录不上？**
-确认后端已启动且导入过 `city-reviews.sql`，默认账号 `admin / admin123`。
-
----
-
-## 🤝 贡献
-
-欢迎提交 Issue 与 PR。请保持代码风格统一，涉及 Redis/秒杀等关键逻辑的改动请补充注释说明。
-
-## 📄 许可证
-
-本项目基于 [MIT License](LICENSE) 开源，仅供学习交流使用。
+[MIT](LICENSE)

@@ -51,27 +51,27 @@
 			<view class="section-title">我的内容</view>
 			<view class="menu-list">
 				<view class="menu-item" @click="goEditProfile">
-					<uni-icons type="person" size="22" color="#ff6600"></uni-icons>
+					<uni-icons type="person" size="22" color="#216b50"></uni-icons>
 					<text class="menu-text">编辑资料</text>
 					<uni-icons type="right" size="16" color="#ccc"></uni-icons>
 				</view>
 				<view class="menu-item" @click="goMyBlogs">
-					<uni-icons type="compose" size="22" color="#ff6600"></uni-icons>
+					<uni-icons type="compose" size="22" color="#216b50"></uni-icons>
 					<text class="menu-text">我的笔记</text>
 					<uni-icons type="right" size="16" color="#ccc"></uni-icons>
 				</view>
 				<view class="menu-item" @click="goMyFollows">
-					<uni-icons type="personadd" size="22" color="#ff6600"></uni-icons>
+					<uni-icons type="personadd" size="22" color="#216b50"></uni-icons>
 					<text class="menu-text">我的关注</text>
 					<uni-icons type="right" size="16" color="#ccc"></uni-icons>
 				</view>
 				<view class="menu-item" @click="goFavoriteShops">
-					<uni-icons type="star" size="22" color="#ff6600"></uni-icons>
+					<uni-icons type="star" size="22" color="#216b50"></uni-icons>
 					<text class="menu-text">收藏店铺</text>
 					<uni-icons type="right" size="16" color="#ccc"></uni-icons>
 				</view>
 				<view class="menu-item" @click="goMyOrders">
-					<uni-icons type="wallet" size="22" color="#ff6600"></uni-icons>
+					<uni-icons type="wallet" size="22" color="#216b50"></uni-icons>
 					<text class="menu-text">我的优惠券</text>
 					<text v-if="creditsInfo.availableCoupons" class="menu-count">{{ creditsInfo.availableCoupons }}张可用</text>
 					<uni-icons type="right" size="16" color="#ccc"></uni-icons>
@@ -97,7 +97,7 @@
 			<view class="section-title">其他</view>
 			<view class="menu-list">
 				<view class="menu-item" @click="goPublish">
-					<uni-icons type="plus-filled" size="22" color="#ff6600"></uni-icons>
+					<uni-icons type="plus-filled" size="22" color="#216b50"></uni-icons>
 					<text class="menu-text">发布笔记</text>
 					<uni-icons type="right" size="16" color="#ccc"></uni-icons>
 				</view>
@@ -269,11 +269,11 @@ export default {
 	justify-content: space-between;
 }
 .credits-left { display: flex; flex-direction: column; gap: 6rpx; }
-.credits-tip { font-size: 22rpx; color: #ff6600; font-weight: 600; }
+.credits-tip { font-size: 22rpx; color: #216b50; font-weight: 600; }
 .credits-amount { font-size: 40rpx; font-weight: 700; color: #333; }
 .credits-signin { display: flex; align-items: center; gap: 16rpx; margin-top: 4rpx; }
 .credits-signin-text { font-size: 24rpx; color: #999; }
-.credits-badge-count { font-size: 20rpx; color: #fff; background: #ff6600; border-radius: 20rpx; padding: 4rpx 16rpx; }
+.credits-badge-count { font-size: 20rpx; color: #fff; background: #216b50; border-radius: 20rpx; padding: 4rpx 16rpx; }
 .credits-coupon-count { font-size: 20rpx; color: #2d7d74; background: #e8f6f3; border-radius: 20rpx; padding: 4rpx 16rpx; }
 
 </style>

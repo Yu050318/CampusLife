@@ -50,7 +50,7 @@
 			<!-- 关联店铺 -->
 			<view class="shop-section" @click="goSelectShop">
 				<view class="shop-label">
-					<uni-icons type="shop-filled" size="18" color="#ff6600"></uni-icons>
+					<uni-icons type="shop-filled" size="18" color="#216b50"></uni-icons>
 					<text>{{ selectedShop ? selectedShop.name : '关联店铺（可选）' }}</text>
 				</view>
 				<uni-icons type="right" size="16" color="#ccc"></uni-icons>
@@ -60,7 +60,7 @@
 		<view v-if="selectedShop" class="rating-section">
 			<text class="rating-label">店铺评分</text>
 			<view class="star-picker">
-				<uni-icons v-for="i in 5" :key="i" :type="i <= rating ? 'star-filled' : 'star'" size="36" :color="i <= rating ? '#ff6600' : '#ddd'" @click="rating = i" />
+				<uni-icons v-for="i in 5" :key="i" :type="i <= rating ? 'star-filled' : 'star'" size="36" :color="i <= rating ? '#216b50' : '#ddd'" @click="rating = i" />
 			</view>
 			<text class="rating-hint" v-if="rating > 0">{{ rating }}分</text>
 		</view>
@@ -246,7 +246,7 @@ export default {
 	width: 120rpx;
 	height: 60rpx;
 	line-height: 60rpx;
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	color: #fff;
 	border-radius: 30rpx;
 	font-size: 26rpx;
@@ -384,7 +384,7 @@ export default {
 }
 .rating-hint {
 	font-size: 24rpx;
-	color: #ff6600;
+	color: #216b50;
 	font-weight: 600;
 }
 

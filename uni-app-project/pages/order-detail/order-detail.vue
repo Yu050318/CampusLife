@@ -95,7 +95,7 @@ export default {
 <style scoped>
 .container { background-color: #f5f5f5; min-height: 100vh; }
 .card { background-color: #fff; margin: 20rpx; border-radius: 12rpx; overflow: hidden; }
-.status-area { display: flex; flex-direction: column; align-items: center; padding: 40rpx 0 30rpx; background: linear-gradient(135deg, #fff5ef, #fff); }
+.status-area { display: flex; flex-direction: column; align-items: center; padding: 40rpx 0 30rpx; background: linear-gradient(135deg, #edf5ef, #fff); }
 .status-icon { width: 80rpx; height: 80rpx; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 16rpx; }
 .status-icon.warning { background-color: #fff0e0; }
 .status-icon.success { background-color: #e6f9f0; }
@@ -105,7 +105,7 @@ export default {
 .status-text { font-size: 30rpx; font-weight: 600; color: #333; }
 .verify-section { margin: 0 24rpx 24rpx; padding: 24rpx; background-color: #fff8f0; border-radius: 8rpx; text-align: center; }
 .verify-label { font-size: 24rpx; color: #999; display: block; }
-.verify-code { font-size: 48rpx; font-weight: 700; color: #ff6600; letter-spacing: 8rpx; margin: 12rpx 0; display: block; }
+.verify-code { font-size: 48rpx; font-weight: 700; color: #216b50; letter-spacing: 8rpx; margin: 12rpx 0; display: block; }
 .verify-tip { font-size: 22rpx; color: #999; }
 .info-section { padding: 24rpx; }
 .info-title { font-size: 28rpx; font-weight: 600; color: #333; margin-bottom: 16rpx; }
@@ -113,12 +113,12 @@ export default {
 .info-row:last-child { border-bottom: none; }
 .label { font-size: 26rpx; color: #999; }
 .value { font-size: 26rpx; color: #333; }
-.value.price { color: #ff6600; font-weight: 600; }
+.value.price { color: #216b50; font-weight: 600; }
 .value.small { font-size: 22rpx; color: #999; word-break: break-all; }
 .btn-area { padding: 30rpx 20rpx; }
 .action-btn { width: 100%; height: 88rpx; line-height: 88rpx; text-align: center; border-radius: 44rpx; font-size: 30rpx; border: none; margin-bottom: 20rpx; }
 .action-btn::after { border: none; }
-.pay-btn { background: linear-gradient(135deg, #ff6600, #ff8833); color: #fff; }
+.pay-btn { background: linear-gradient(135deg, #216b50, #398361); color: #fff; }
 .cancel-btn { background-color: #f5f5f5; color: #999; }
-.refund-btn { background-color: #f5f5f5; color: #ff6600; }
+.refund-btn { background-color: #f5f5f5; color: #216b50; }
 </style>

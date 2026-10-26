@@ -13,7 +13,7 @@
 			<!-- 订单信息 -->
 			<view class="order-card">
 				<view class="order-header">
-					<uni-icons type="checkbox-filled" size="48" color="#ff6600"></uni-icons>
+					<uni-icons type="checkbox-filled" size="48" color="#216b50"></uni-icons>
 					<text class="order-title">订单已生成</text>
 				</view>
 				<view class="order-row">
@@ -191,7 +191,7 @@ export default {
 .amount {
 	font-size: 32rpx;
 	font-weight: 700;
-	color: #ff6600;
+	color: #216b50;
 }
 
 .pay-actions {
@@ -205,7 +205,7 @@ export default {
 	width: 100%;
 	height: 88rpx;
 	line-height: 88rpx;
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	color: #ffffff;
 	border-radius: 44rpx;
 	font-size: 32rpx;

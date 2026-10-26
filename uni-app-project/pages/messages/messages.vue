@@ -119,7 +119,7 @@ export default {
 .header-fixed { position: sticky; top: 0; z-index: 200; background: #fff; }
 .nav-row { height: 88rpx; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1rpx solid #f0f0f0; }
 .nav-title { font-size: 34rpx; font-weight: 700; color: #333; }
-.read-all { position: absolute; right: 24rpx; color: #ff6600; font-size: 26rpx; }
+.read-all { position: absolute; right: 24rpx; color: #216b50; font-size: 26rpx; }
 .message-list { padding: 20rpx; }
 .msg-item { min-height: 106rpx; display: flex; align-items: center; background: #fff; padding: 24rpx; margin-bottom: 12rpx; border-radius: 12rpx; gap: 18rpx; }
 .msg-item.unread { background: #fffaf6; }
@@ -137,5 +137,5 @@ export default {
 .empty-wrap { display: flex; flex-direction: column; align-items: center; padding: 150rpx 0; }
 .empty-icon { display: block; margin-bottom: 20rpx; }
 .empty-text { font-size: 28rpx; color: #999; }
-.login-btn { margin-top: 32rpx; padding: 16rpx 60rpx; background: #ff6600; color: #fff; border-radius: 40rpx; font-size: 28rpx; }
+.login-btn { margin-top: 32rpx; padding: 16rpx 60rpx; background: #216b50; color: #fff; border-radius: 40rpx; font-size: 28rpx; }
 </style>

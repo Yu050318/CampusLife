@@ -1,7 +1,7 @@
 {
-    "name" : "uni-app-project",
+    "name" : "校邻 CampusLife",
     "appid" : "__UNI__7A39148",
-    "description" : "",
+    "description" : "校园生活分享与周边好店发现，个人学习项目",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,

@@ -3,9 +3,13 @@
 		{
 			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "点评",
+				"navigationBarTitleText": "校邻 CampusLife",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/nearby-places/nearby-places",
+			"style": { "navigationBarTitleText": "周边地点", "backgroundColor": "#f6f8f3" }
 		},
 		{
 			"path": "pages/login/login",
@@ -150,25 +154,25 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "点评",
+		"navigationBarTitleText": "校邻 CampusLife",
 		"navigationBarBackgroundColor": "#ffffff",
 		"backgroundColor": "#f5f5f5",
 		"animationType": "none"
 	},
 	"tabBar": {
 		"color": "#999999",
-		"selectedColor": "#ff6600",
+		"selectedColor": "#216b50",
 		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
 		"custom": false,
 		"list": [
 			{
 				"pagePath": "pages/home/home",
-				"text": "首页"
+				"text": "发现"
 			},
 			{
 				"pagePath": "pages/nearby/nearby",
-				"text": "附近"
+				"text": "周边"
 			},
 			{
 				"pagePath": "pages/messages/messages",

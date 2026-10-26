@@ -118,12 +118,12 @@ export default {
 .avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 60rpx; position: relative; }
 .avatar-img { width: 160rpx; height: 160rpx; border-radius: 50%; background: #f0f0f0; }
 .avatar-overlay { margin-top: 16rpx; }
-.avatar-overlay text { font-size: 26rpx; color: #ff6600; }
+.avatar-overlay text { font-size: 26rpx; color: #216b50; }
 .input-item { display: flex; align-items: center; padding: 24rpx 0; border-bottom: 1rpx solid #eee; margin-bottom: 8rpx; }
 .label { width: 160rpx; font-size: 28rpx; color: #333; font-weight: 500; }
 .input-item input { flex: 1; font-size: 28rpx; color: #333; }
 .ph { color: #ccc; font-size: 28rpx; }
 .reg-btn { margin-top: 50rpx; }
 .bottom-row { text-align: center; margin-top: 30rpx; }
-.link { font-size: 26rpx; color: #ff6600; }
+.link { font-size: 26rpx; color: #216b50; }
 </style>

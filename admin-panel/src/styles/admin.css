@@ -1,9 +1,16 @@
 /* ===== 统一后台管理样式 ===== */
 :root {
-  --page-bg: #f0f2f5;
+  --page-bg: #f6f7f2;
   --card-radius: 10px;
   --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --brand: #409eff;
+  --brand: #216b50;
+  --el-color-primary: #216b50;
+  --el-color-primary-light-3: #648f79;
+  --el-color-primary-light-5: #90b5a1;
+  --el-color-primary-light-7: #c1d7c8;
+  --el-color-primary-light-8: #dce8df;
+  --el-color-primary-light-9: #edf5ef;
+  --el-color-primary-dark-2: #18513c;
 }
 
 /* 页面容器 */

@@ -3,9 +3,9 @@
 		<view class="status-bar"></view>
 		<view class="login-box">
 			<view class="logo-area">
-				<text class="app-icon">🏙</text>
-				<text class="app-name">城市点评</text>
-				<text class="app-slogan">发现身边好去处</text>
+				<text class="app-icon">邻</text>
+				<text class="app-name">校邻 CampusLife</text>
+				<text class="app-slogan">在华农，遇见日常的小美好</text>
 			</view>
 
 			<!-- 登录方式切换 -->
@@ -43,6 +43,7 @@
 			<view class="tips">
 				<text>验证码登录：验证码将发送到后端控制台日志</text>
 			</view>
+			<view class="project-note">个人学习项目，非华南农业大学官方平台</view>
 		</view>
 	</view>
 </template>
@@ -139,22 +140,23 @@ export default {
 .status-bar { height: var(--status-bar-height); }
 .login-box { padding: 60rpx 60rpx; }
 .logo-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 50rpx; }
-.app-icon { font-size: 80rpx; }
+.app-icon { width: 120rpx; height: 120rpx; line-height: 120rpx; text-align: center; font-size: 76rpx; font-weight: 700; color: #fff; background: #216b50; border-radius: 36rpx 36rpx 10rpx 36rpx; }
+.project-note { text-align: center; margin-top: 32rpx; font-size: 21rpx; color: #899286; line-height: 1.8; }
 .app-name { font-size: 48rpx; font-weight: 700; color: #333; margin-top: 16rpx; }
 .app-slogan { font-size: 28rpx; color: #999; margin-top: 10rpx; }
 .login-tabs { display: flex; justify-content: center; gap: 60rpx; margin-bottom: 50rpx; }
 .tab { font-size: 30rpx; color: #999; padding-bottom: 12rpx; border-bottom: 4rpx solid transparent; transition: all 0.2s; }
-.tab.active { color: #ff6600; font-weight: 700; border-bottom-color: #ff6600; }
+.tab.active { color: #216b50; font-weight: 700; border-bottom-color: #216b50; }
 .form { margin-bottom: 50rpx; }
 .input-item { display: flex; align-items: center; padding: 24rpx 0; border-bottom: 1rpx solid #eee; }
 .label { width: 140rpx; font-size: 30rpx; color: #333; font-weight: 500; }
 .input-item input { flex: 1; font-size: 30rpx; color: #333; }
 .ph { color: #ccc; }
 .code-item { justify-content: space-between; }
-.code-btn { width: 180rpx; height: 64rpx; line-height: 64rpx; font-size: 24rpx; color: #ff6600; background: #fff5ef; border-radius: 32rpx; padding: 0; margin: 0; }
+.code-btn { width: 180rpx; height: 64rpx; line-height: 64rpx; font-size: 24rpx; color: #216b50; background: #edf5ef; border-radius: 32rpx; padding: 0; margin: 0; }
 .code-btn[disabled] { color: #999; background: #f5f5f5; }
 .login-btn { margin-top: 30rpx; }
 .bottom-row { text-align: center; margin-top: 30rpx; }
-.link { font-size: 26rpx; color: #ff6600; }
+.link { font-size: 26rpx; color: #216b50; }
 .tips { text-align: center; margin-top: 40rpx; font-size: 22rpx; color: #ccc; }
 </style>

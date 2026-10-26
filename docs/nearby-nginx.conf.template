@@ -1,0 +1,72 @@
+# 部署片段模板，不是可直接运行的完整 nginx.conf。
+# 在 http {} 中定义一次，必须设置共享限流区：
+# limit_req_zone $binary_remote_addr zone=nearby_sdk:10m rate=30r/m;
+# 以下 location 放入现有 HTTPS server {}；前端继续使用原项目 SPA 配置。
+# 用部署系统替换 ${AMAP_JS_KEY} 与 ${AMAP_JS_SECURITY_CODE}，它们不是 Nginx 变量。
+# 若使用 envsubst，只替换这两个变量，保留 $arg_* 等 Nginx 变量。
+
+location = /api/nearby/pois {
+    proxy_pass http://127.0.0.1:8081/nearby/pois;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For "";
+    proxy_set_header Forwarded "";
+    proxy_read_timeout 10s;
+}
+
+# 只提供定位 SDK 需要的 IP、逆地理和坐标纠偏服务；不提供任意高德 API 转发。
+location = /_AMapService/v3/ip {
+    if ($request_method != GET) { return 405; }
+    if ($arg_key != "${AMAP_JS_KEY}") { return 403; }
+    if ($arg_jscode != "") { return 400; }
+    limit_req zone=nearby_sdk burst=5 nodelay;
+    access_log off;
+    error_log /dev/null crit;
+    proxy_ssl_server_name on;
+    proxy_set_header Host restapi.amap.com;
+    proxy_set_header Authorization "";
+    proxy_set_header Cookie "";
+    proxy_connect_timeout 2s;
+    proxy_read_timeout 5s;
+    # Keep proxy_pass static: a hostname with variables otherwise requires a resolver.
+    # Preserve SDK platform/s metadata; dropping it causes USERKEY_PLAT_NOMATCH.
+    set $args "$args&jscode=${AMAP_JS_SECURITY_CODE}";
+    proxy_pass https://restapi.amap.com/v3/ip;
+}
+
+location = /_AMapService/v3/geocode/regeo {
+    if ($request_method != GET) { return 405; }
+    if ($arg_key != "${AMAP_JS_KEY}") { return 403; }
+    if ($arg_jscode != "") { return 400; }
+    limit_req zone=nearby_sdk burst=5 nodelay;
+    access_log off;
+    error_log /dev/null crit;
+    proxy_ssl_server_name on;
+    proxy_set_header Host restapi.amap.com;
+    proxy_set_header Authorization "";
+    proxy_set_header Cookie "";
+    proxy_connect_timeout 2s;
+    proxy_read_timeout 5s;
+    set $args "$args&jscode=${AMAP_JS_SECURITY_CODE}";
+    proxy_pass https://restapi.amap.com/v3/geocode/regeo;
+}
+
+location = /_AMapService/v3/assistant/coordinate/convert {
+    if ($request_method != GET) { return 405; }
+    if ($arg_key != "${AMAP_JS_KEY}") { return 403; }
+    if ($arg_jscode != "") { return 400; }
+    limit_req zone=nearby_sdk burst=5 nodelay;
+    access_log off;
+    error_log /dev/null crit;
+    proxy_ssl_server_name on;
+    proxy_set_header Host restapi.amap.com;
+    proxy_set_header Authorization "";
+    proxy_set_header Cookie "";
+    proxy_connect_timeout 2s;
+    proxy_read_timeout 5s;
+    # convertFrom sends duplicate key/s parameters. Rebuild the required parameters
+    # with exactly one configured key; retain SDK platform/s for JS key validation.
+    set $args "key=${AMAP_JS_KEY}&jscode=${AMAP_JS_SECURITY_CODE}&platform=$arg_platform&s=$arg_s&locations=$arg_locations&coordsys=$arg_coordsys&callback=$arg_callback";
+    proxy_pass https://restapi.amap.com/v3/assistant/coordinate/convert;
+}
+
+location /_AMapService/ { return 404; }

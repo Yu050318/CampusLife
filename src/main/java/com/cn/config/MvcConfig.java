@@ -32,7 +32,7 @@ public class MvcConfig implements WebMvcConfigurer {
                         "/blog/hot", "/blog/likes/**", "/blog/of/user", "/blog/of/shop",
                         "/blog/feed/rebuild",
                         "/user/code", "/user/login", "/user/register", "/user/info/*",
-                        "/blog-comments/of/**", "/admin/login"
+                        "/blog-comments/of/**", "/admin/login", "/nearby/pois"
                 ).order(1);
         // 管理员权限拦截器
         registry.addInterceptor(new AdminInterceptor(jwtUtil))

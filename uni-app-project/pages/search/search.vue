@@ -375,10 +375,10 @@ export default {
 }
 
 .type-chip.active {
-	background: linear-gradient(135deg, #ff6600, #ff8833);
+	background: linear-gradient(135deg, #216b50, #398361);
 	color: #ffffff;
 	font-weight: 600;
-	box-shadow: 0 6rpx 16rpx rgba(255, 102, 0, 0.22);
+	box-shadow: 0 6rpx 16rpx rgba(33, 107, 80, 0.22);
 }
 
 .hot-card {

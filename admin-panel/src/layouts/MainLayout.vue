@@ -3,11 +3,11 @@
     <el-aside width="220px" class="aside">
       <div class="logo">
         <el-icon class="logo-icon"><Shop /></el-icon>
-        <span>城市点评后台</span>
+        <span>校邻 · 管理后台</span>
       </div>
       <el-menu
         :default-active="activeMenu"
-        background-color="#1f2937"
+        background-color="#183e30"
         text-color="#c7d0dc"
         active-text-color="#ffffff"
         router
@@ -15,7 +15,7 @@
         <el-menu-item index="/dashboard"><el-icon><DataAnalysis /></el-icon><span>仪表盘</span></el-menu-item>
         <el-menu-item index="/users"><el-icon><User /></el-icon><span>用户管理</span></el-menu-item>
         <el-menu-item index="/shops"><el-icon><Shop /></el-icon><span>商户管理</span></el-menu-item>
-        <el-menu-item index="/blogs"><el-icon><Document /></el-icon><span>点评管理</span></el-menu-item>
+        <el-menu-item index="/blogs"><el-icon><Document /></el-icon><span>笔记管理</span></el-menu-item>
         <el-menu-item index="/comments"><el-icon><ChatDotRound /></el-icon><span>评论管理</span></el-menu-item>
         <el-menu-item index="/vouchers"><el-icon><Ticket /></el-icon><span>优惠券管理</span></el-menu-item>
         <el-menu-item index="/orders"><el-icon><List /></el-icon><span>订单管理</span></el-menu-item>
@@ -65,7 +65,7 @@ export default {
 <style scoped>
 .layout { height: 100%; }
 .aside {
-  background: #1f2937;
+  background: #183e30;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
 }
 .logo {
@@ -77,10 +77,10 @@ export default {
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  background: #111827;
+  background: #123225;
   letter-spacing: 1px;
 }
-.logo-icon { font-size: 22px; color: #409eff; }
+.logo-icon { font-size: 22px; color: #a6ce9b; }
 .aside .el-menu { border-right: none; }
 .aside .el-menu-item { height: 50px; }
 
@@ -102,5 +102,5 @@ export default {
   outline: none;
 }
 .user-name { font-size: 14px; }
-.main { background: #f0f2f5; padding: 20px; }
+.main { background: #f6f7f2; padding: 20px; }
 </style>

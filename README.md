@@ -209,16 +209,6 @@ node node_modules/@dcloudio/vite-plugin-uni/bin/uni.js build -p h5
 
 另提供独立 Redis 集成测试与 Playwright 交互脚本，运行方式见 [模块说明](docs/nearby-places.md)。
 
-## 界面展示
-
-| 店铺浏览 | 内容社区 | 个人中心 |
-| --- | --- | --- |
-| ![店铺浏览](screenshots/店铺首页.png) | ![内容社区](screenshots/笔记首页.png) | ![个人中心](screenshots/我的页面.png) |
-
-| 积分商城 | 管理看板 |
-| --- | --- |
-| ![积分商城](screenshots/积分商城.png) | ![管理看板](screenshots/管理面板.png) |
-
 ## 项目展示与简历
 
 [简历项目描述与面试讲解提纲](docs/resume-project.md)提供项目概述、技术职责、源码入口和两分钟演示顺序，可结合目标岗位选取内容。
